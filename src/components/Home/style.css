@@ -1,0 +1,14 @@
+.movies-list {
+  display: flex;
+  gap: 46px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  padding: 40px 0 20px 0;
+}
+
+.movie-poster {
+  height: 193px;
+  width: 129px;
+  background-size: cover;
+}

@@ -1,0 +1,19 @@
+header {
+  height: 67px;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #c3cfd9;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+header h1 {
+  font: 400 34px/40px "Roboto";
+  color: #e8833a;
+}

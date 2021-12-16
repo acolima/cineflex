@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+input {
+  all: unset;
+}
+
+body {
+  position: relative;
+}
+
+.page {
+  width: 100vw;
+  height: 500px;
+
+  margin-top: 67px;
+
+  overflow-y: scroll;
+}
+
+.select-text {
+  font: 400 24px/28px "Roboto";
+  color: #293845;
+  text-align: center;
+
+  padding-top: 20px;
+}
