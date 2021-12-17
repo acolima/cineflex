@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Header from "./components/Header"
-import Home from "./components/Home"
+import Movies from "./components/Movies"
+import Sessions from "./components/Sessions"
 
 
 export default function App(){
@@ -8,7 +9,8 @@ export default function App(){
     <BrowserRouter>
     <Header/>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<Movies/>}></Route>
+        <Route path="/sessoes/:sessionId" element={<Sessions/>}></Route>
       </Routes>
     </BrowserRouter>
   )

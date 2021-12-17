@@ -1,0 +1,34 @@
+.movies-page {
+  width: 100vw;
+  height: 100vh;
+
+  margin-top: 67px;
+
+  overflow-y: scroll;
+}
+
+.movies-list {
+  display: flex;
+  gap: 46px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  padding: 40px 0 20px 0;
+}
+
+.movie-poster {
+  height: 209px;
+  width: 145px;
+
+  border-radius: 3px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-poster img {
+  height: 193px;
+  width: 129px;
+  background-size: cover;
+}

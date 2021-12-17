@@ -1,0 +1,33 @@
+.session {
+  padding: 23px 0 0 23px;
+}
+
+.date {
+  font: 400 20px/23px "Roboto";
+  color: #293845;
+}
+
+.session div {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+
+  padding-top: 10px;
+}
+
+.session-time {
+  height: 43px;
+  width: 83px;
+
+  border-radius: 3px;
+
+  background-color: #e8833a;
+}
+
+.session-time p {
+  font: 400 18px/21px "Roboto";
+  text-align: center;
+  color: #ffffff;
+
+  margin: 0 auto;
+}

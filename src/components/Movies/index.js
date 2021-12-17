@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css"
 
-function Home() {
+function Movies({setMovieInfo}) {
   const [movies, setMovies] = useState([])
 
   useEffect(() => {
@@ -11,14 +11,17 @@ function Home() {
   
     promise.then((response) => setMovies(response.data))
   }, [])
+
+  console.log(movies[0])
+
   
   return (
-    <div className="page">
+    <div className="movies-page">
       <div className="select-text">Selecione o filme</div>
         <div className="movies-list">
           {movies.map((movie) => 
-            <Link to={`/sessoes/${movie.id}`} key={movie.id} className="movie">
-                <img className="movie-poster" src={movie.posterURL} alt={movie.title}/>
+            <Link to={`/sessoes/${movie.id}`} key={movie.id} className="movie-poster">
+                <img src={movie.posterURL} alt={movie.title}/>
             </Link>
           )}
       </div>
@@ -26,4 +29,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default Movies;
