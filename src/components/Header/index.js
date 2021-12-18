@@ -28,7 +28,7 @@ const PageHeader = styled.header`
   left: 0;
   
   h1 {
-  font: 400 34px/40px "Roboto";
-  color: #e8833a;
+    font: 400 34px/40px "Roboto";
+    color: #e8833a;
   }
 `

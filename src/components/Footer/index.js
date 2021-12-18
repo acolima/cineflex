@@ -1,12 +1,15 @@
 import "./style.css"
 
-function Footer({movieInfo}) {
+function Footer({type, posterURL, title, weekday, time}) {
   return (
     <footer>
       <div className="movie-poster">
-        <img src={movieInfo.posterURL} alt={movieInfo.ttle}/>
+        <img src={posterURL} alt={title}/>
       </div>
-      <div className="movie-title">{movieInfo.title}</div>
+      <div>
+        <div className="movie-title">{title}</div>
+        {type && <div className="movie-title">{weekday} - {time}</div>}
+      </div>
     </footer>
   )
 }

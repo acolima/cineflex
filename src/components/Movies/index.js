@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../Loading";
 import "./style.css"
 
-function Movies({setMovieInfo}) {
+function Movies() {
   const [movies, setMovies] = useState([])
 
   useEffect(() => {
@@ -12,9 +13,9 @@ function Movies({setMovieInfo}) {
     promise.then((response) => setMovies(response.data))
   }, [])
 
-  console.log(movies[0])
+  if(movies.length === 0)
+    return<Loading/>
 
-  
   return (
     <div className="movies-page">
       <div className="select-text">Selecione o filme</div>

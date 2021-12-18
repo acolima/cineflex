@@ -1,0 +1,80 @@
+.seats-page {
+  width: 100vw;
+
+  margin: 67px 0 130px 0;
+
+  overflow-y: scroll;
+}
+
+.seats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  padding: 20px 0 0 24px;
+}
+
+.seats-status {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.seat-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 16px;
+}
+
+.seat-type p {
+  font: 400 13px "Roboto";
+  color: #4e5a65;
+}
+
+.seat-type .seat {
+  margin-bottom: 0;
+}
+
+.user-infos {
+  padding: 40px 0 0 24px;
+}
+
+.user-infos p {
+  font: 400 18px/21px "Roboto";
+  margin-bottom: 5px;
+}
+
+.input-infos {
+  height: 51px;
+  width: 90%;
+
+  border-radius: 3px;
+  border: 1px solid #d4d4d4;
+
+  margin-bottom: 10px;
+  padding-left: 18px;
+}
+
+.input-infos::placeholder {
+  font: italic 400 18px/21px "Roboto";
+  color: #afafaf;
+}
+
+.reserve-seats {
+  height: 42px;
+  width: 70%;
+
+  border-radius: 3px;
+  margin: 57px auto 0 auto;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: #e8833a;
+}
+
+.reserve-seats p {
+  font: 400 18px/21px "Roboto";
+  color: #fff;
+}
