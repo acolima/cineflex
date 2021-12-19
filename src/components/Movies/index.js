@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Loading from "../Loading";
 import "./style.css"
 
-function Movies() {
+export default function Movies() {
   const [movies, setMovies] = useState([])
 
   useEffect(() => {
@@ -29,5 +29,3 @@ function Movies() {
     </div>
   )
 }
-
-export default Movies;

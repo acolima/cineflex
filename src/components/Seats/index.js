@@ -1,29 +1,65 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Footer from "../Footer";
 import Loading from "../Loading";
-import Seat from "../Seat"
 import "./style.css"
 
-function Seats({movieInfo}) {
+export default function Seats({setSessionInfo, sessionInfo, setInfosBuyer}) {
   const {sessionId} = useParams()
   const [seats, setSeats] = useState([])
-  const [sessionInfo, setSessionInfo] = useState()
+  const [selectedSeats, setSelectedSeats] = useState([seats])
+  const [name, setName] = useState("")
+  const [cpf, setCpf] = useState("")
+
+  // const [buttonStatus, setButtonStatus] = useState("")
+
+  let navigate = useNavigate()
 
   useEffect(() => {
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${sessionId}/seats`)
     promise.then((response) => {
       setSessionInfo(response.data)
       setSeats(response.data.seats)
+      seats.map((seat) => (seat.isSelected = false))
     })
   }, [])
 
-  seats.map((seat) => { // coloca um isSelected em todos os assentos
-    seat.isSelected = false
+  function handleSeatClick(id, isAvailable){
+    if(isAvailable){
+      const seat = seats.find((chair) => chair.id === id)
+      seat.isSelected = !seat.isSelected
+      setSelectedSeats([...selectedSeats])
+    }
+    else alert("Esse assento não está disponível")
 
-  })
+  }
+
+  // function handleButton(){
+  //   if(name !== "" && cpf !== "") setButtonStatus("active")
+  // }
+
+
+  
+  function handleReservation(){
+    const seatsId = []
+    const seatNumber = []
+    sessionInfo.seats.filter((seat) =>
+      seat.isSelected === true
+    ).map((seat) => {
+      seatsId.push(seat.id)
+      seatNumber.push(seat.name)
+    }
+    )
+
+    setInfosBuyer({name, cpf})
+
+    const promise = axios.post(`https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many`, {ids: seatsId, name, cpf})
+    promise.then((response) => navigate("/sucesso"))
+    promise.catch((error) => console.log(error.data))
+  }
+
 
   if(seats.length === 0)
     return<Loading/>
@@ -34,12 +70,11 @@ function Seats({movieInfo}) {
         <div className="select-text">Selecione o(s) assento(s)</div>
         <div className="seats">
           {seats.map((seat) => (
-            <Seat
+            <div
+              className={`seat ${(!seat.isAvailable) ? "unavailable" : ""} ${(seat.isSelected) ? "selected" : ""}`}
+              onClick={() => handleSeatClick(seat.id, seat.isAvailable)}
               key={seat.id}
-              infos={seat}
-              setSeats={setSeats}
-              seats={seats}
-            />
+            >{seat.name}</div>
           ))}
         </div>
 
@@ -60,22 +95,32 @@ function Seats({movieInfo}) {
 
         <div className="user-infos">
           <p>Nome do comprador:</p>
-          <input className="input-infos" type="text" placeholder="Digite seu nome..." />
+          <input
+            className="input-infos"
+            type="text"
+            placeholder="Digite seu nome..."
+            onChange={(e) => setName(e.target.value)}
+            value={name}
+          />
           <p>CPF do comprador:</p>
-          <input className="input-infos"type="text" placeholder="Digite seu CPF..." />
+          <input
+            className="input-infos"
+            type="text"
+            placeholder="Digite seu CPF..."
+            onChange={(e) => setCpf(e.target.value)}
+            value={cpf}
+          />
         </div>
 
-        <div className="reserve-seats">
-          <button><p>Reservar assento(s)</p></button>
-        </div>
+        <button className={`reserve-seats`} onClick={() => handleReservation()}>
+          <p>Reservar assento(s)</p>
+        </button>
 
       </div>
-      <Footer type={"seat"} weekday={sessionInfo.day.weekday} time={sessionInfo.name} posterURL={movieInfo.posterURL} title={movieInfo.title}/>
+      <Footer type={"seat"} weekday={sessionInfo.day.weekday} time={sessionInfo.name} posterURL={sessionInfo.movie.posterURL} title={sessionInfo.movie.title}/>
     </>
   )
 }
-
-export default Seats;
 
 const SeatCaption = styled.div`
   height: 26px;

@@ -14,6 +14,29 @@
   padding: 20px 0 0 24px;
 }
 
+.seat {
+  height: 26px;
+  width: 26px;
+  border-radius: 12px;
+
+  background-color: #c3cfd9;
+  margin-bottom: 10px;
+
+  font: 400 11px/13px "Roboto";
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.unavailable {
+  background-color: #fbe192;
+}
+
+.selected {
+  background-color: #8dd7cf;
+}
+
 .seats-status {
   display: flex;
   justify-content: space-evenly;
@@ -37,7 +60,7 @@
 }
 
 .user-infos {
-  padding: 40px 0 0 24px;
+  padding: 40px 0 57px 24px;
 }
 
 .user-infos p {
@@ -61,20 +84,29 @@
   color: #afafaf;
 }
 
-.reserve-seats {
+.reserve-seats,
+.btnHome {
   height: 42px;
   width: 70%;
 
   border-radius: 3px;
-  margin: 57px auto 0 auto;
+  margin: 0 auto 0 auto;
 
   display: flex;
   justify-content: center;
+  align-items: center;
 
   background-color: #e8833a;
+  cursor: pointer;
 }
 
-.reserve-seats p {
+.reserve-seats p,
+.btnHome p {
   font: 400 18px/21px "Roboto";
   color: #fff;
 }
+/* 
+.disabled {
+  pointer-events: none;
+  background-color: #a6a6a6;
+} */

@@ -5,7 +5,7 @@ import Footer from "../Footer"
 import "./style.css"
 import Loading from "../Loading"
 
-function Sessions({movieInfo, setMovieInfo}) {
+export default function Sessions({movieInfo, setMovieInfo}) {
   const {movieId} = useParams()
   const [sessions, setSession] = useState([])
 
@@ -43,5 +43,3 @@ function Sessions({movieInfo, setMovieInfo}) {
     </div>
   )
 }
-
-export default Sessions
