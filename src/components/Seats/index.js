@@ -67,6 +67,7 @@ export default function Seats() {
   return (
     <>
       <div className="page">
+        <p className="btn-back" onClick={() => navigate(-1)}>Voltar</p>
         <h1>Selecione o(s) assento(s)</h1>
         <div className="seats">
           {seats.map((seat) => (

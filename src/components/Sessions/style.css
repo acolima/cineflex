@@ -30,3 +30,16 @@
   justify-content: center;
   align-items: center;
 }
+
+.btn-back {
+  font: 400 20px/28px "Roboto";
+  color: #293845;
+  text-align: center;
+
+  padding-left: 20px;
+
+  position: fixed;
+  top: 20px;
+
+  cursor: pointer;
+}

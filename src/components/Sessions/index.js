@@ -1,5 +1,5 @@
 import axios from "axios"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Footer from "../Footer"
 import Loading from "../Loading"
@@ -9,6 +9,8 @@ export default function Sessions() {
   const {movieId} = useParams()
   const [sessions, setSession] = useState([])
   const [movieInfo, setMovieInfo] = useState("")
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/movies/${movieId}/showtimes`)
@@ -24,6 +26,7 @@ export default function Sessions() {
   
   return(
     <div className="page">
+      <p className="btn-back" onClick={() => navigate(-1)}>Voltar</p>
       <h1>Selecione o horário</h1>
       <div className="sessions-list">
         {(sessions.map((session) => (
