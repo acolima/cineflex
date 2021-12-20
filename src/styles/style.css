@@ -2,9 +2,31 @@ body {
   position: relative;
 }
 
-.select-text {
+.page {
+  width: 100vw;
+
+  margin: 67px 0 130px 0;
+
+  overflow-y: scroll;
+}
+
+.page.success {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.page h1 {
   font: 400 24px/28px "Roboto";
   color: #293845;
+  text-align: center;
+
+  padding-top: 20px;
+}
+
+.page.success h1 {
+  color: #247a6b;
+  font: 700 24px/28px "Roboto";
   text-align: center;
 
   padding-top: 20px;

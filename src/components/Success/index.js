@@ -1,32 +1,35 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./style.css"
 
-export default function Success({sessionInfo, infosBuyer}) {  
-  const tickets = [...sessionInfo.seats.filter((seat) => 
-    seat.isSelected === true
-  )]
+export default function Success() {  
+  const {state} = useLocation();
+
+  let cpf = state.cpf
+
+  cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
+
 
   return (
-    <div className="success-page">
+    <div className="page success">
       <h1>Pedido feito com sucesso!</h1>
-      <div>
+      <div className="info-sucess">
         <h2>Filme e sessão</h2>
-        <p>{sessionInfo.movie.title}</p>
-        <p>{sessionInfo.day.date} {sessionInfo.name}</p>
+        <p>{state.title}</p>
+        <p>{state.date} {state.time}</p>
       </div>
-      <div>
-      <h2>Ingressos</h2>
-        {tickets.map((ticket) => (
-          <p key={ticket.id}>Ingresso {ticket.name}</p>
+      <div className="info-sucess">
+        <h2>Ingressos</h2>
+        {state.seats.map((seat) => (
+          <p >Assento {seat}</p>
         ))}
       </div>
-      <div>
+      <div className="info-sucess">
         <h2>Comprador</h2>
-        <p>{infosBuyer.name}</p>
-        <p>{infosBuyer.cpf}</p>
+        <p>Nome: {state.name}</p>
+        <p>CPF: {cpf}</p>
       </div>
 
-      <Link to="/" className={"btnHome"}>
+      <Link to="/" className={"btn-home"}>
         <p>Voltar para home</p>
       </Link>
     </div>

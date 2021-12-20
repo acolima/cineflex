@@ -1,15 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import styled from "styled-components";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../Footer";
 import Loading from "../Loading";
 import "./style.css"
 
-export default function Seats({setSessionInfo, sessionInfo, setInfosBuyer}) {
+export default function Seats() {
   const {sessionId} = useParams()
+  const [sessionInfo, setSessionInfo] = useState([])
   const [seats, setSeats] = useState([])
-  const [selectedSeats, setSelectedSeats] = useState([seats])
   const [name, setName] = useState("")
   const [cpf, setCpf] = useState("")
 
@@ -22,52 +21,60 @@ export default function Seats({setSessionInfo, sessionInfo, setInfosBuyer}) {
     promise.then((response) => {
       setSessionInfo(response.data)
       setSeats(response.data.seats)
-      seats.map((seat) => (seat.isSelected = false))
     })
   }, [])
 
   function handleSeatClick(id, isAvailable){
+    const selectedSeats = [...seats]
+
     if(isAvailable){
-      const seat = seats.find((chair) => chair.id === id)
+      const seat = selectedSeats.find((chair) => chair.id === id)
       seat.isSelected = !seat.isSelected
-      setSelectedSeats([...selectedSeats])
+      setSeats([...selectedSeats])
     }
     else alert("Esse assento não está disponível")
-
   }
 
   // function handleButton(){
   //   if(name !== "" && cpf !== "") setButtonStatus("active")
   // }
 
-
-  
   function handleReservation(){
     const seatsId = []
     const seatNumber = []
-    sessionInfo.seats.filter((seat) =>
-      seat.isSelected === true
-    ).map((seat) => {
-      seatsId.push(seat.id)
-      seatNumber.push(seat.name)
-    }
+
+    seats
+      .filter((seat) => (seat.isSelected === true))
+      .map((seat) => {
+        seatsId.push(seat.id)
+        seatNumber.push(seat.name)
+      }
     )
 
-    setInfosBuyer({name, cpf})
+    const infos = {
+      title: sessionInfo.movie.title,
+      date: sessionInfo.day.date,
+      time: sessionInfo.name,
+      seats: seatNumber,
+      name: name,
+      cpf: cpf
+    }
+
+    // navigate("/sucesso", {state: infos})
 
     const promise = axios.post(`https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many`, {ids: seatsId, name, cpf})
-    promise.then((response) => navigate("/sucesso"))
+    
+    promise.then((response) => navigate("/sucesso", {state: infos}))
     promise.catch((error) => console.log(error.data))
   }
-
 
   if(seats.length === 0)
     return<Loading/>
 
   return (
     <>
-      <div className="seats-page">
-        <div className="select-text">Selecione o(s) assento(s)</div>
+      <div className="page">
+        <h1>Selecione o(s) assento(s)</h1>
         <div className="seats">
           {seats.map((seat) => (
             <div
@@ -78,17 +85,17 @@ export default function Seats({setSessionInfo, sessionInfo, setInfosBuyer}) {
           ))}
         </div>
 
-        <div className="seats-status">
-          <div className="seat-type">
-            <SeatCaption color={"#8dd7cf"}></SeatCaption>
+        <div className="caption">
+          <div className="seat-caption">
+            <div className="seat selected"></div>
             <p>Selecionado</p>
           </div>
-          <div className="seat-type">
-            <SeatCaption color={"#c3cfd9"}></SeatCaption>
+          <div className="seat-caption">
+            <div className="seat"></div>
             <p>Disponível</p>
           </div>
-          <div className="seat-type">
-            <SeatCaption color={"#fbe192"}></SeatCaption>
+          <div className="seat-caption">
+            <div className="seat unavailable"></div>
             <p>Indisponível</p>
           </div>
         </div>
@@ -112,27 +119,11 @@ export default function Seats({setSessionInfo, sessionInfo, setInfosBuyer}) {
           />
         </div>
 
-        <button className={`reserve-seats`} onClick={() => handleReservation()}>
+        <button className={`btn-reserve-seats`} onClick={() => handleReservation()}>
           <p>Reservar assento(s)</p>
         </button>
-
       </div>
       <Footer type={"seat"} weekday={sessionInfo.day.weekday} time={sessionInfo.name} posterURL={sessionInfo.movie.posterURL} title={sessionInfo.movie.title}/>
     </>
   )
 }
-
-const SeatCaption = styled.div`
-  height: 26px;
-  width: 26px;
-  border-radius: 12px;
-
-  background-color: ${(props) => props.color};
-  margin-bottom: 10px;
-
-  font: 400 11px/13px "Roboto";
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`

@@ -8,18 +8,15 @@ import Success from "./components/Success"
 
 
 export default function App(){
-  const [movieInfo, setMovieInfo] = useState("")
-  const [sessionInfo, setSessionInfo] = useState([])
-  const [infosBuyer, setInfosBuyer] = useState({})
 
   return(
     <BrowserRouter>
     <Header/>
       <Routes>
         <Route path="/" element={<Movies/>}></Route>
-        <Route path="/sessoes/:movieId" element={<Sessions movieInfo={movieInfo} setMovieInfo={setMovieInfo}/>}></Route>
-        <Route path="/assentos/:sessionId" element={<Seats sessionInfo={sessionInfo} setSessionInfo={setSessionInfo} setInfosBuyer={setInfosBuyer}/>}></Route>
-        <Route path="/sucesso" element={<Success sessionInfo={sessionInfo} infosBuyer={infosBuyer}/>}></Route>
+        <Route path="/sessoes/:movieId" element={<Sessions/>}></Route>
+        <Route path="/assentos/:sessionId" element={<Seats />}></Route>
+        <Route path="/sucesso" element={<Success/>}></Route>
       </Routes>
     </BrowserRouter>
   )

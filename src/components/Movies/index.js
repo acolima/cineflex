@@ -17,8 +17,8 @@ export default function Movies() {
     return<Loading/>
 
   return (
-    <div className="movies-page">
-      <div className="select-text">Selecione o filme</div>
+    <div className="page">
+      <h1>Selecione o filme</h1>
         <div className="movies-list">
           {movies.map((movie) => 
             <Link to={`/sessoes/${movie.id}`} key={movie.id} className="movie-poster">

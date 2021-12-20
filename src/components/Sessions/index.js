@@ -2,12 +2,14 @@ import axios from "axios"
 import { Link, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Footer from "../Footer"
-import "./style.css"
 import Loading from "../Loading"
+import "./style.css"
 
-export default function Sessions({movieInfo, setMovieInfo}) {
+export default function Sessions() {
   const {movieId} = useParams()
   const [sessions, setSession] = useState([])
+  const [movieInfo, setMovieInfo] = useState("")
+
 
   useEffect(() => {
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/movies/${movieId}/showtimes`)
@@ -22,8 +24,8 @@ export default function Sessions({movieInfo, setMovieInfo}) {
     return<Loading/>
   
   return(
-    <div className="sessions-page">
-      <div className="select-text">Selecione o horário</div>
+    <div className="page">
+      <h1>Selecione o horário</h1>
       <div className="sessions-list">
         {(sessions.map((session) => (
           <div className="session" key={session.id}>
@@ -31,7 +33,7 @@ export default function Sessions({movieInfo, setMovieInfo}) {
             <div>
             {session.showtimes.map((time) => (
               <Link to={`/assentos/${time.id}`} key={time.id}>
-                <div className="session-time" ><p>{time.name}</p></div>
+                <p className="session-time">{time.name}</p>
               </Link>
             ))}
             </div>

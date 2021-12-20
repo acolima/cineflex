@@ -1,35 +1,15 @@
-.success-page {
-  width: 100%;
-
-  margin-top: 67px;
-
-  overflow-y: scroll;
-
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.success-page div {
+.info-sucess {
   width: 80%;
   padding-left: 30px;
 }
 
-.success-page h1 {
-  color: #247a6b;
-  font: 700 24px/28px "Roboto";
-  text-align: center;
-
-  padding-top: 20px;
-}
-
-.success-page h2 {
+.info-sucess h2 {
   font: 700 24px/28px "Roboto";
   color: #293845;
   padding-bottom: 15px;
 }
 
-.success-page div > p {
+.info-sucess p {
   font: 400 22px/26px "Roboto";
   color: #293845;
   padding-bottom: 5px;

@@ -1,11 +1,3 @@
-.seats-page {
-  width: 100vw;
-
-  margin: 67px 0 130px 0;
-
-  overflow-y: scroll;
-}
-
 .seats {
   display: flex;
   flex-wrap: wrap;
@@ -17,7 +9,9 @@
 .seat {
   height: 26px;
   width: 26px;
+
   border-radius: 12px;
+  border: 1px solid #808f9d;
 
   background-color: #c3cfd9;
   margin-bottom: 10px;
@@ -31,18 +25,20 @@
 
 .unavailable {
   background-color: #fbe192;
+  border: 1px solid #f7c52b;
 }
 
 .selected {
   background-color: #8dd7cf;
+  border: 1px solid #45bdb0;
 }
 
-.seats-status {
+.caption {
   display: flex;
   justify-content: space-evenly;
 }
 
-.seat-type {
+.seat-caption {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,13 +46,9 @@
   padding-top: 16px;
 }
 
-.seat-type p {
+.seat-caption p {
   font: 400 13px "Roboto";
   color: #4e5a65;
-}
-
-.seat-type .seat {
-  margin-bottom: 0;
 }
 
 .user-infos {
@@ -84,8 +76,8 @@
   color: #afafaf;
 }
 
-.reserve-seats,
-.btnHome {
+.btn-reserve-seats,
+.btn-home {
   height: 42px;
   width: 70%;
 
@@ -100,8 +92,8 @@
   cursor: pointer;
 }
 
-.reserve-seats p,
-.btnHome p {
+.btn-reserve-seats p,
+.btn-home p {
   font: 400 18px/21px "Roboto";
   color: #fff;
 }

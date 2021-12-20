@@ -1,12 +1,3 @@
-.sessions-page {
-  width: 100vw;
-  height: 100vh;
-
-  margin: 67px 0 130px 0;
-
-  overflow-y: scroll;
-}
-
 .session {
   padding: 23px 0 0 23px;
 }
@@ -31,12 +22,11 @@
   border-radius: 3px;
 
   background-color: #e8833a;
-}
 
-.session-time p {
   font: 400 18px/21px "Roboto";
-  text-align: center;
   color: #ffffff;
 
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
