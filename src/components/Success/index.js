@@ -1,4 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
+import {useLocation } from "react-router-dom";
+import Button from "../Button";
 import "./style.css"
 
 export default function Success() {  
@@ -7,7 +8,6 @@ export default function Success() {
   let cpf = state.cpf
 
   cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
-
 
   return (
     <div className="page success">
@@ -20,7 +20,7 @@ export default function Success() {
       <div className="info-sucess">
         <h2>Ingressos</h2>
         {state.seats.map((seat) => (
-          <p >Assento {seat}</p>
+          <p>Assento {seat}</p>
         ))}
       </div>
       <div className="info-sucess">
@@ -29,9 +29,7 @@ export default function Success() {
         <p>CPF: {cpf}</p>
       </div>
 
-      <Link to="/" className={"btn-home"}>
-        <p>Voltar para home</p>
-      </Link>
+      <Button from={"success"}/>
     </div>
   )
 }

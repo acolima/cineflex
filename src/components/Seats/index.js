@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import styled from "styled-components";
+import Button from "../Button";
 import Footer from "../Footer";
 import Loading from "../Loading";
 import "./style.css"
@@ -11,9 +13,6 @@ export default function Seats() {
   const [seats, setSeats] = useState([])
   const [name, setName] = useState("")
   const [cpf, setCpf] = useState("")
-
-  // const [buttonStatus, setButtonStatus] = useState("")
-
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -34,10 +33,6 @@ export default function Seats() {
     }
     else alert("Esse assento não está disponível")
   }
-
-  // function handleButton(){
-  //   if(name !== "" && cpf !== "") setButtonStatus("active")
-  // }
 
   function handleReservation(){
     const seatsId = []
@@ -60,8 +55,6 @@ export default function Seats() {
       cpf: cpf
     }
 
-    // navigate("/sucesso", {state: infos})
-
     const promise = axios.post(`https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many`, {ids: seatsId, name, cpf})
     
     promise.then((response) => navigate("/sucesso", {state: infos}))
@@ -69,7 +62,7 @@ export default function Seats() {
   }
 
   if(seats.length === 0)
-    return<Loading/>
+    return <Loading/>
 
   return (
     <>
@@ -102,28 +95,45 @@ export default function Seats() {
 
         <div className="user-infos">
           <p>Nome do comprador:</p>
-          <input
+          <Input
             className="input-infos"
             type="text"
             placeholder="Digite seu nome..."
             onChange={(e) => setName(e.target.value)}
-            value={name}
-          />
+            value={name}>
+          </Input>
           <p>CPF do comprador:</p>
-          <input
-            className="input-infos"
+          <Input
             type="text"
             placeholder="Digite seu CPF..."
             onChange={(e) => setCpf(e.target.value)}
-            value={cpf}
-          />
+            value={cpf}>
+          </Input>
         </div>
-
-        <button className={`btn-reserve-seats`} onClick={() => handleReservation()}>
-          <p>Reservar assento(s)</p>
-        </button>
+        <Button handleReservation={handleReservation}/>
       </div>
       <Footer type={"seat"} weekday={sessionInfo.day.weekday} time={sessionInfo.name} posterURL={sessionInfo.movie.posterURL} title={sessionInfo.movie.title}/>
     </>
   )
 }
+
+const Input = styled.input`
+  height: 51px;
+  width: 90%;
+
+  border-radius: 3px;
+  border: 1px solid #d4d4d4;
+
+  margin-bottom: 10px;
+  padding-left: 18px;
+
+  ::placeholder {
+  font: italic 400 18px/21px "Roboto";
+  color: #afafaf;
+  }
+
+  :focus{
+    border: 1px solid #848181;
+
+  }
+`

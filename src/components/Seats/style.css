@@ -59,7 +59,7 @@
   font: 400 18px/21px "Roboto";
   margin-bottom: 5px;
 }
-
+/* 
 .input-infos {
   height: 51px;
   width: 90%;
@@ -74,31 +74,4 @@
 .input-infos::placeholder {
   font: italic 400 18px/21px "Roboto";
   color: #afafaf;
-}
-
-.btn-reserve-seats,
-.btn-home {
-  height: 42px;
-  width: 70%;
-
-  border-radius: 3px;
-  margin: 0 auto 0 auto;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: #e8833a;
-  cursor: pointer;
-}
-
-.btn-reserve-seats p,
-.btn-home p {
-  font: 400 18px/21px "Roboto";
-  color: #fff;
-}
-/* 
-.disabled {
-  pointer-events: none;
-  background-color: #a6a6a6;
 } */
