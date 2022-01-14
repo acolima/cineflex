@@ -1,6 +1,6 @@
 # Cineflex
 
-A Single-Page application to buy a movie ticket.
+A Single-Page application to book a movie ticket.
 
 Deployment: https://cineflex1.vercel.app/
 
