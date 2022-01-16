@@ -57,7 +57,7 @@ export default function Seats() {
 
     const promise = axios.post(`https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many`, {ids: seatsId, name, cpf})
     
-    promise.then((response) => navigate("/sucesso", {state: infos}))
+    promise.then(() => navigate("/sucesso", {state: infos}))
     promise.catch((error) => console.log(error.data))
   }
 

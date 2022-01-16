@@ -43,3 +43,9 @@
 
   cursor: pointer;
 }
+
+.description {
+  padding: 20px;
+
+  font: 300 16px "Roboto";
+}

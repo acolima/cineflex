@@ -27,6 +27,8 @@ export default function Sessions() {
   return(
     <div className="page">
       <p className="btn-back" onClick={() => navigate(-1)}>Voltar</p>
+      <h1>{movieInfo.title}</h1>
+      <p className="description">{movieInfo.overview}</p>
       <h1>Selecione o horário</h1>
       <div className="sessions-list">
         {(sessions.map((session) => (
