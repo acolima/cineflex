@@ -4,12 +4,11 @@ A Single-Page application to book a movie ticket.
 
 Deployment: https://cineflex1.vercel.app/
 
-## About
+## Implemented features
 
-Implemented features:
-- List of movies
-- List to see the movie sessions
-- List to choose an seat
+- List with the movies title and description
+- All the sessions for the chosen movie
+- List with the seats for that session
 
 ## Technologies
 <p>
@@ -23,16 +22,19 @@ Implemented features:
 ## How to run
 
 1. Clone this repository
+```bash
+$ git clone git@github.com:acolima/Cineflex.git
+```
 2. Install dependencies
 ```bash
-npm i
+$ npm i
 ```
 3. Run project with
 ```bash
-npm start
+$ npm start
 ```
 4. You can optionally build the project running
 ```bash
-npm run build
+$ npm run build
 ```
 5. Finally access http://localhost:3000 on your browser
