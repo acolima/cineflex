@@ -2,6 +2,8 @@
 
 A Single-Page application to book a movie ticket.
 
+<img src='/src/assets/cineflex.gif' alt="cineflex gif"/>
+
 Deployment: https://cineflex1.vercel.app/
 
 ## Implemented features
@@ -12,11 +14,11 @@ Deployment: https://cineflex1.vercel.app/
 
 ## Technologies
 <p>
-  <img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB' />
+  <img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB' alt="React" />
 
-  <img src='https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white' />
+  <img src='https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white' alt="React-Router-Dom"/>
 
-  <img style='margin: 5px;' src='https://img.shields.io/badge/axios%20-%2320232a.svg?&style=for-the-badge&color=informational'>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/axios%20-%2320232a.svg?&style=for-the-badge&color=informational' alt="Axios">
 </p>
 
 ## How to run
